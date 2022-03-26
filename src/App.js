@@ -3,8 +3,10 @@ import "./App.css";
 import React, { useContext } from "react";
 import { Web3Context } from "./web3";
 
+
 function App() {
-  const { account, connectWeb3, logout } = useContext(Web3Context);
+  const { account, connectWeb3, logout, provider } = useContext(Web3Context);
+  const { chainId } = provider.getNetwork();
 
   return (
     <div className="App">
@@ -16,6 +18,7 @@ function App() {
           ) : (
             <div>
               <p>Account: {account}</p>
+              <p>ChainId: {chainId}</p>
               <button onClick={logout}>Logout</button>
             </div>
           )}
